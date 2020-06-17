@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tzolkin</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'qamar/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'qamar/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'qamar/estilos.css' %}">
+    <script src="{% static 'qamar/popper.min.js' %}"></script>
+    <script src="{% static 'qamar/jquery.min.js' %}"></script>
+    <script src="{% static 'qamar/bootstrap.min.js' %}"></script>
+    <script src="{% static 'qamar/dinamic.js' %}"></script>
+    <script src="{% static 'qamar/custom.js' %}"></script>
+</head>
+<div id="loaders-wrapper">
+    <div id="loaders"></div>
+</div>
+<body class="cuerpo">
+
+    
+
+    <nav class="navbar inicio navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container">
+            <div class="col">
+                <img class="navbar-brand" src="{% static 'qamar/images/logo3.png' %}" alt="">
+            </div>
+            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link tzolkin-txt" href="{% url 'editar' %}">Calendario</a>
+                    </li>
+                    -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Información</a>
+                    </li>
+                    <li class="nav-item">
+                        
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Calendarios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            {% if menu_items %}
+                                {% for menuItem in menu_items %}
+                                    <a class="dropdown-item" href="{% url 'calendario' pk=menuItem.id %}">{{menuItem.chab}}</a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="jumbotron pie bg-light" style="margin-bottom:0">
+        <div class="row">
+            <div class="col-sm">
+                <hr>
+                <div class="text-center center-block">
+                    <p class="txt-railway"><h3>- Redes Sociales -</h3></p>
+                    <br/>
+                    <a href="https://www.facebook.com/institutonacionaldebosques" target="_blank"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://twitter.com/inabguatemala" target="_blank"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                    <a href="https://www.youtube.com/user/divulgacionINAB" target="_blank"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+                    <a href="#"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+                </div>
+                <hr>
+            </div>
+            <div id="contacto" class="col-sm">
+                <div class="text-center center-block">
+                <hr>
+                    <p class="txt-railway"><h3>- Contáctanos -</h3></p>
+                    <div class="text-justify">
+                        <table>
+                            <tr>
+                                <td><i class="fa fa-phone-square fa-3x forma"></i><br></td>
+                                <td><h4>Teléfono: +502 2321-2626</h4></td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <td><i class="fa fa-envelope-o fa-3x forma"></i></td>
+                                <td><a href="mailto:informacion@inab.gob.gt?subject=Más información."><h4>informacion@inab.gob.gt</h4></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

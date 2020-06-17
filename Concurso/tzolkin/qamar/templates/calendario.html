@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container bg-light">
+    <br>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+        th, td {
+            text-align: center;
+            /*padding: 4px;*/
+            font-size: x-small
+        }
+
+        body{
+            font-family: Montserrat, sans-serif;
+        }
+        img{  
+          display:flex;
+          margin:0 auto;
+        }
+        .tarjeta {
+            height: 7vw;
+            object-fit: cover;
+        }
+        /*tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        */
+    </style>
+
+
+    <div style="overflow-x:auto;">
+
+        <div class="row justify-content-md-center">
+            <div class="col text-center">
+                {% for c in chab  %}
+                    <img src="{{c.imagenChab.url}}" class="figure-img img-fluid rounded" alt="" width="110" height="100">
+                {% endfor %}
+                Cargador del año {{chab.0}}
+            </div>
+            <div class="col-6 text-center">
+                <p class="tzolkin-title">
+                    INSTITUTO NACIONAL DE BOSQUES
+                </p>
+                <p class="tzolkin-sub-title">
+                    CALENDARIO FORESTAL DESDE LOS CONOCIMIENTOS ANCESTRALES Y PRÁCTICAS TRADICIONALES DE LOS PUEBLOS INDÍGENAS
+                </p>
+                <p class="tzolkin-sub-title">
+                    IXIMULEW, GUATEMALA, {{chab.0}}
+                </p>
+            </div>
+            <div class="col text-center">
+                <img class="" src="{% static 'qamar/images/logo_negro.png' %}" alt="" width="175" height="101">
+            </div>
+        </div>
+
+        <table border="1px">
+            <tr>
+                <th colspan="6" style="text-align: right;"><strong>POA DEL PLAN DE MANEJO FORESTAL</strong></th>
+                <th colspan="{{nums.0}}"><strong>PRIMER CUATRIMESTRE</strong></th>
+                <th colspan="{{nums.1}}"><strong>SEGUNDO CUATRIMESTRE</strong></th>
+                <th colspan="{{nums.2}}"><strong>TERCER CUATRIMESTRE</strong></th>
+            </tr>
+            <tr>
+                <th colspan="6" style="text-align: right;"><strong>CAMBIO DEL SOL: SOLSTICIO Y EQUINOCCIO</strong></th>
+                <th colspan="{{sols.0}}">Solsticio (21 de diciembre al 20 de marzo)</th>
+                <th colspan="{{sols.1}}">Equinoccio (21 de marzo al 20 de junio)</th>
+                <th colspan="{{sols.2}}">Solsticio (21 de junio al 20 de septiembre)</th>
+                <th colspan="{{sols.3}}">Equinoccio (21 de septiembre al 20 de diciembre)</th>
+            </tr>
+            <tr>
+                <th colspan="6" style="text-align: right;"><strong>CICLO DE VIDA DEL ÁRBOL</strong></th>
+                <th colspan="{{sols.0}}">Ciclo Masculino del árbol</th>
+                <th colspan="{{sols.1}}">Ciclo Femenino del árbol</th>
+                <th colspan="{{sols.2}}">Ciclo Femenino del árbol</th>
+                <th colspan="{{sols.3}}">Ciclo Masculino del árbol</th>
+            </tr>
+            <tr>
+                <th colspan="6" style="text-align: right;"><strong>TIEMPO</strong></th>
+                <th colspan="{{temps.0}}">SEQUÍA</th>
+                <th colspan="{{temps.1}}">LLUVIOSO</th>
+                <th colspan="{{temps.2}}">SEQUIA</th>
+            </tr>
+            <tr>
+                <th colspan="6" style="text-align: right;"><strong>ÉPOCA</strong></th>
+                <th colspan="{{cEpocas.0}}">Frío</th>
+                <th colspan="{{cEpocas.1}}">Calor</th>
+                <th colspan="{{cEpocas.2}}">Húmedo</th>
+                <th colspan="{{cEpocas.3}}">Viento</th>
+                <th colspan="{{cEpocas.4}}">Frío</th>
+            </tr>
+            <tr>
+                <th colspan="6" style="text-align: right;"><strong>MESES DEL AÑO</strong></th>
+                {% if meses %}
+                    {% for mes in meses %}
+                        {% if mes.nombreMes == 'ENERO' %}
+                            <th colspan="{{cMeses.0}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'FEBRERO' %}
+                            <th colspan="{{cMeses.1}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'MARZO' %}
+                            <th colspan="{{cMeses.2}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'ABRIL' %}
+                            <th colspan="{{cMeses.3}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'MAYO' %}
+                            <th colspan="{{cMeses.4}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'JUNIO' %}
+                            <th colspan="{{cMeses.5}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'JULIO' %}
+                            <th colspan="{{cMeses.6}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'AGOSTO' %}
+                            <th colspan="{{cMeses.7}}">{{ mes }} {{cMeses.id}}</th>
+                        {% elif mes.nombreMes == 'SEPTIEMBRE' %}
+                            <th colspan="{{cMeses.8}}">{{ mes }}</th>
+                        {% elif mes.nombreMes == 'OCTUBRE' %}
+                            <th colspan="{{cMeses.9}}">{{ mes }}</th>
+                        {% elif mes.nombreMes == 'NOVIEMBRE' %}
+                            <th colspan="{{cMeses.10}}">{{ mes }}</th>
+                        {% elif mes.nombreMes == 'DICIEMBRE' %}
+                            <th colspan="{{cMeses.11}}">{{ mes }}</th>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <h1>No existen meses relacionados</h1>
+                {% endif %}
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: right;"><strong>FECHA DEL MES DE CADA FASE LUNAR</strong></td>
+                {% if dias %}
+                    {% for fecha in dias  %}
+                        <td>
+                            {{ fecha.fecha }}
+                        </td>
+                    {% endfor %}
+                {% else %}
+                    <h1>No existen fechas relacionadas</h1>
+                {% endif %}
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: right;"><strong>FASES LUNARES</strong></td>
+                {% if dias %}
+                    {% for fecha in dias  %}
+                        <td>
+                            {% for fase in fases %}
+                                {% if fecha.idFase_id == fase.id %}
+                                    
+                                        <img src="{{fase.imagenFase.url}}" class="figure-img img-fluid rounded" alt="">
+                                    
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                {% else %}
+                    <h1>No existen fechas relacionadas</h1>
+                {% endif %}
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: left;"><b>ACTIVIDADES PRIMARIAS</b></td>
+                {% if cantidadDias %}
+                    {% for number in cantidadDias %}
+                        <td></td>
+                    {% endfor %}
+                {% else %}
+                    <h1>No existen días</h1>
+                {% endif %}
+            </tr>
+            {% if actividades %}
+                {% for actividad in actividades %}
+                    <tr>
+                        <td colspan="6" style="text-align: left;"><a href="{% url 'detalle_actividad' pk=actividad.pk %}">{{ actividad.nombreActividad }}</a></td>
+
+                        {% if data %}
+                            {% for dat in data %}
+                                {% if dat.0 == actividad.nombreActividad %}
+                                    {% for dt in dat %}
+                                        {% if forloop.first %}
+                                        {% else %}
+                                            {% if dt == 0 %}
+                                                <td class="celda"></td>
+                                            {% else %}
+                                                <td class="celda primario"><b>x</b></td>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No existen actividades relacionadas</h1>
+            {% endif %}
+        </table>
+    </div>
+    <br>
+    <div class="row justify-content-md-center">
+        <div class="col-3">
+            <img src="{{logos.0.imagenLogo.url}}" class="figure-img img-fluid rounded" alt="">
+        </div>
+        <div class="col-5">
+            <img src="{{logos.1.imagenLogo.url}}" class="figure-img img-fluid rounded" alt="">
+        </div>
+        <div class="col-4">
+            <img src="{{logos.2.imagenLogo.url}}" class="figure-img img-fluid rounded" alt="">
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}

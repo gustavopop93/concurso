@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if producto %}
+	    <br>
+	    <div class="container bg-light" id="prod">
+	        <br>
+	        <div class="row align-items-start">
+	            {% if producto %}
+	                <div class="col-sm">
+	                    <figure class="figure text-center">
+	                        <a href="" data-toggle="modal" data-target="#imgModal"><img src="{{producto.imagenProducto.url}}" class="figure-img img-fluid rounded" alt="." style="width:350px;"></a>
+	                    </figure>
+	                </div>
+	                <div class="col-sm">
+	                	<figcaption class="figure-caption font-weight-bold"><h3><a href="{% url 'detalle_prod' pk=producto.pk %}">{{ producto.nombreProducto }}</a></h3></figcaption>
+                		<h4 class="font-weigth-light" style="font-size:20px;color:#d9534f">Q.{{ producto.precioProducto }}</h4>
+                        <h6>{{ producto.descripcion|linebreaksbr }}</h6>
+                        <h6>Cantidad disponible: {{ producto.cantidad|linebreaksbr }}</h6>
+                        <br>
+                        <br>
+                        <form action="{% url 'cart:cart_add' producto.pk %}" method="post">
+                        	{{ cart_product_form }}
+                        	{% csrf_token %}
+                        	<input class="btn btn-outline-info" type="submit" value="Reservar">
+                        </form>
+	                        <!--<h6>{{ producto.categoria.id|linebreaksbr }}</h6>-->
+	                </div>
+	            {% endif %}
+				<!-- Modal -->
+				<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-body">
+				        <figure class="figure text-center">
+	                        <a href="" data-toggle="modal" data-target="#imgModal"><img src="{{producto.imagenProducto.url}}" class="figure-img img-fluid rounded" alt="." style="width:550px;"></a>
+	                    </figure>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+	        </div>
+	    </div>
+    {% endif %}
+{% endblock %}

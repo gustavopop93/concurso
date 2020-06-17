@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if actividad %}
+	    <br><br><br><br><br>
+	    <div class="container bg-light" id="prod">
+	        <br>
+	        <div class="row align-items-start">
+	            {% if actividad %}
+	                <div class="col-sm">
+                		<h4 class="font-weigth-light" style="font-size:20px;color:#d9534f">{{ actividad.nombreActividad }}</h4>
+                        <h6>{{ actividad.descripcion|linebreaksbr }}</h6>
+                        <br>
+                        <table class="table">
+                        	<thead>
+                        		<tr>
+                        			<th scope="col">ACTIVIDAD FORESTAL</th>
+                        			<th scope="col">CUATRIMESTRE</th>
+                        			<th scope="col">CAMBIO DE SOL</th>
+                        			<th scope="col">CICLO DE VIDA DEL ARBOL</th>
+                        			<th scope="col">TIEMPO DEL AÑO</th>
+                        			<th scope="col">EPOCA DEL AÑO</th>
+                        			<th scope="col">MESES DEL AÑO</th>
+                        			<th scope="col">FASE/S LUNAR/ES</th>
+                        		</tr>
+                        	</thead>
+                        	<tbody>
+                        		<tr>
+                        			<td>
+                        				{{ actividad.nombreActividad }}
+                        			</td>
+                        			<td>
+                        				<table class="table">
+                        					<tbody>
+                        						{% for c in cuat %}
+                        							<tr>
+                        								<td>{{ c }}</td>
+                        							</tr>
+                        						{% endfor %}		
+                        					</tbody>
+                        				</table>
+                        			</td>
+                        			<td>
+                        				
+                        			</td>
+                        			<td>
+                        				
+                        			</td>
+                        			<td>
+                        				<table class="table">
+                        					<tbody>
+                        						{% for c in tiem %}
+                        							<tr>
+                        								<td>{{ c }}</td>
+                        							</tr>
+                        						{% endfor %}		
+                        					</tbody>
+                        				</table>
+                        			</td>
+                        			<td>
+                        				<table class="table">
+                        					<tbody>
+                        						{% for c in epo %}
+                        							<tr>
+                        								<td>{{ c }}</td>
+                        							</tr>
+                        						{% endfor %}		
+                        					</tbody>
+                        				</table>
+                        			</td>
+                        			<td>
+                        				<table class="table">
+                        					<tbody>
+                        						{% for c in po %}
+                        							<tr>
+                        								<td>{{ c }}</td>
+                        							</tr>
+                        						{% endfor %}		
+                        					</tbody>
+                        				</table>
+                        			</td>
+                        			<td>
+                        				<table class="table">
+                        					<tbody>
+                        						{% for c in fas %}
+                        							<tr>
+                        								<td>{{ c }}</td>
+                        							</tr>
+                        						{% endfor %}		
+                        					</tbody>
+                        				</table>
+                        			</td>
+                        		</tr>
+                        	</tbody>
+                        </table>
+                        <br>
+	                </div>
+	            {% endif %}
+				<!-- Modal -->
+				<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-body">
+				        <figure class="figure text-center">
+	                        <a href="" data-toggle="modal" data-target="#imgModal"><img src="{{actividad.imagenProducto.url}}" class="figure-img img-fluid rounded" alt="." style="width:550px;"></a>
+	                    </figure>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+	        </div>
+	    </div>
+    {% endif %}
+{% endblock %}

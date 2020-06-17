@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+    <br>
+    <div class="container bg-light" >
+        {% if registered %}
+            <h3>¡Felicitaciones!</h3><hr/>
+            <p>Gracias por registrarte, <a href="{% url 'login' %}" title="Ingresa aquí">ingresa aquí.</a></p>
+        {% else %}
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Crear cuenta en Tzolkin</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <form method="POST" action="">
+                    {% for field in user_form.visible_fields %}
+                        {{ field.errors }}
+                        <div class="form-group">
+                            {% render_field field class="form-control" autocomplete="off" %}
+                        </div>
+                    {% endfor %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                    {% csrf_token %}
+                    <button type="submit" class="btn tzolkin-success btn-block">Crear cuenta</button>
+                </form>
+                <br>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <h3>Ingreso</h3><hr/>
+                <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}" title="Ingresa aquí">ingresa aquí.</a></p>
+            </div>
+
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
